@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atacadão dos Gigas — Tecnologia com Preço Justo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins (Heading) e Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Parallax Leve */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Sombras e Efeitos Neon Intensificados para Fundos Claros */
+        .shadow-neon-purple { box-shadow: 0 10px 30px rgba(157, 78, 221, 0.25); }
+        .shadow-neon-green { box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3); }
+        .shadow-neon-cyan { box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3); }
+        .shadow-neon-orange { box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3); }
+        .shadow-neon-amber { box-shadow: 0 10px 30px rgba(255, 183, 3, 0.3); }
+        .shadow-neon-magenta { box-shadow: 0 10px 30px rgba(255, 0, 127, 0.25); }
+        .shadow-neon-coral { box-shadow: 0 10px 30px rgba(255, 71, 71, 0.3); }
+        .shadow-neon-emerald { box-shadow: 0 10px 30px rgba(0, 255, 135, 0.3); }
+
+        /* Glassmorphism para Fundos Claros */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animações de Entrada (Scroll) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animação de pulso do WhatsApp */
+        @keyframes pulse-whatsapp {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(34, 197, 94, 0); }
+        }
+        .pulse-wa {
+            animation: pulse-whatsapp 2s infinite;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a21caf;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden">
+
+    <!-- MENU STICKY -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="imagens/logo-mascote.jpg" alt="Atacadão dos Gigas" class="h-12 w-12 rounded-full border border-purple-500 shadow-neon-purple object-cover">
+                <span class="font-heading font-extrabold text-lg tracking-wider bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">ATACADÃO DOS GIGAS</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-6 text-sm font-medium text-slate-700">
+                <a href="#" class="hover:text-purple-600 transition-colors">Início</a>
+                <a href="#planos-celular" class="hover:text-green-600 transition-colors">Celular</a>
+                <a href="#planos-modem-4g" class="hover:text-cyan-600 transition-colors">Celular + Modem</a>
+                <a href="#planos-5g" class="hover:text-orange-600 transition-colors">Modem 5G</a>
+                <a href="#como-funciona" class="hover:text-amber-600 transition-colors">Como Funciona</a>
+                <a href="#beneficios" class="hover:text-pink-600 transition-colors">Benefícios</a>
+                <a href="#depoimentos" class="hover:text-purple-600 transition-colors">Depoimentos</a>
+                <a href="#parceiros" class="hover:text-red-600 transition-colors">Parceiros</a>
+                <a href="#trabalhe-conosco" class="hover:text-emerald-600 transition-colors">Trabalhe Conosco</a>
+                <a href="https://wa.me/5500000000000" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2.5 rounded-full font-bold flex items-center gap-2 transition-transform hover:scale-105 shadow-md shadow-green-900/10">
+                    <i class="fab fa-whatsapp text-lg"></i> Fale no WhatsApp
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="xl:hidden text-slate-700 hover:text-slate-950 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#" class="block py-2 text-slate-700 hover:text-purple-600 font-medium">Início</a>
+            <a href="#planos-celular" class="block py-2 text-slate-700 hover:text-green-600 font-medium">Celular</a>
+            <a href="#planos-modem-4g" class="block py-2 text-slate-700 hover:text-cyan-600 font-medium">Celular + Modem</a>
+            <a href="#planos-5g" class="block py-2 text-slate-700 hover:text-orange-600 font-medium">Modem 5G</a>
+            <a href="#como-funciona" class="block py-2 text-slate-700 hover:text-amber-600 font-medium">Como Funciona</a>
+            <a href="#beneficios" class="block py-2 text-slate-700 hover:text-pink-600 font-medium">Benefícios</a>
+            <a href="#depoimentos" class="block py-2 text-slate-700 hover:text-purple-600 font-medium">Depoimentos</a>
+            <a href="#parceiros" class="block py-2 text-slate-700 hover:text-red-600 font-medium">Parceiros</a>
+            <a href="#trabalhe-conosco" class="block py-2 text-slate-700 hover:text-emerald-600 font-medium">Trabalhe Conosco</a>
+            <a href="https://wa.me/5500000000000" target="_blank" class="w-full text-center bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors">
+                <i class="fab fa-whatsapp text-lg"></i> Fale no WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Roxo-neon para Azul Elétrico) -->
+    <section class="relative min-h-[90vh] flex flex-col justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-purple-100 via-indigo-50 to-cyan-100">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-tight text-slate-900 mb-6">
+                ATACADÃO DOS GIGAS
+            </h1>
+            <p class="text-xl sm:text-2xl font-light text-slate-700 max-w-3xl mx-auto mb-8">
+                Tecnologia com preço justo que cabe no seu bolso. <br class="hidden sm:inline">
+                <span class="text-indigo-600 font-bold">Aqui você fica porque gosta, não porque é obrigado.</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10 max-w-4xl mx-auto">
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem SPC</span>
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem Fidelidade</span>
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem Contrato</span>
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem Multas</span>
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem Adesão</span>
+                <span class="bg-white/90 border border-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase text-purple-700 shadow-sm">Sem Pegadinha</span>
+            </div>
+
+            <!-- Player de vídeo com bordas neon vibrantes -->
+            <div class="max-w-3xl mx-auto mb-10 rounded-2xl overflow-hidden border-4 border-purple-500 shadow-neon-purple bg-black relative group">
+                <video id="video-hero" class="w-full aspect-video object-cover" autoplay loop muted playsinline>
+                    <source src="videos/apresentacao-empresa.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+                <button onclick="toggleMute('video-hero', 'btn-vol-hero')" id="btn-vol-hero" class="absolute bottom-4 right-4 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 flex items-center justify-center transition-all z-20">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                </button>
+            </div>
+
+            <div class="glass-card border-l-4 border-l-cyan-500 p-6 rounded-2xl max-w-2xl mx-auto mb-10 text-left shadow-sm">
+                <p class="text-slate-800 font-medium italic">
+                    "Sei que você já foi enganado por operadora antes. Aqui não tem letra miúda — <strong class="text-indigo-600 not-italic">você testa antes de pagar.</strong>"
+                </p>
+            </div>
+
+            <a href="#como-funciona" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:scale-105 shadow-neon-purple">
+                Quero meu teste grátis <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- BARRA DE PROVA SOCIAL (Fundo Roxo Vibrante com Texto Branco) -->
+    <div class="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 relative z-20 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="font-heading font-black text-3xl sm:text-4xl text-green-300 mb-1">+5.000</p>
+                    <p class="text-xs sm:text-sm text-purple-100 font-semibold uppercase tracking-wider">Clientes conectados</p>
+                </div>
+                <div>
+                    <p class="font-heading font-black text-3xl sm:text-4xl text-cyan-200 mb-1">100%</p>
+                    <p class="text-xs sm:text-sm text-purple-100 font-semibold uppercase tracking-wider">Cobertura Nacional</p>
+                </div>
+                <div>
+                    <p class="font-heading font-black text-3xl sm:text-4xl text-orange-300 mb-1">24h</p>
+                    <p class="text-xs sm:text-sm text-purple-100 font-semibold uppercase tracking-wider">Suporte Todos os Dias</p>
+                </div>
+                <div>
+                    <p class="font-heading font-black text-3xl sm:text-4xl text-pink-300 mb-1">30 Dias</p>
+                    <p class="text-xs sm:text-sm text-purple-100 font-semibold uppercase tracking-wider">Garantia em todos planos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLANOS CELULAR (Verde Neon - Fundo Verde Claro e Vivo) -->
+    <section id="planos-celular" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-emerald-50 via-green-100 to-emerald-50">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-emerald-700 font-bold text-sm tracking-widest uppercase block mb-3">// PLANOS MÓVEIS DE ALTA PERFORMANCE</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-emerald-950 mb-6">Planos para Celular</h2>
+                <div class="glass-card max-w-2xl mx-auto p-5 rounded-2xl border-l-4 border-l-emerald-500 text-left shadow-sm">
+                    <p class="text-emerald-950 font-medium">
+                        <strong>Internet que não te deixa na mão:</strong> "Achou pouco 130GB para sua operadora atual? Aqui é rede liberada de verdade, sem 'internet que acaba antes do fim do mês'."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid de Planos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Card 130GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-emerald-400/40 hover:border-emerald-500 transition-all hover:-translate-y-2 hover:shadow-neon-green flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-heading font-extrabold text-2xl text-emerald-950">Plano 130GB</h3>
+                                <p class="text-emerald-800 text-sm mt-1">Sinal firme sempre</p>
+                            </div>
+                            <span class="text-2xl text-emerald-600"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-emerald-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> 130 Gigas de Internet Dedicada</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Ligações Ilimitadas</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Sem Fidelidade ou Multas</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-emerald-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-emerald-600">R$</span>
+                                <span class="text-5xl font-black text-emerald-950">79,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20tenho%20interesse%20no%20Plano%20Celular%20de%20130GB." target="_blank" class="block text-center w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Contratar ou Testar Grátis
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 180GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-emerald-500 hover:border-emerald-600 transition-all hover:-translate-y-2 hover:shadow-neon-green flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white font-extrabold text-xs px-4 py-1.5 rounded-bl-xl tracking-wider uppercase shadow-sm">Mais Vendido</div>
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-heading font-extrabold text-2xl text-emerald-950">Plano 180GB</h3>
+                                <p class="text-emerald-800 text-sm mt-1">Conexão constante</p>
+                            </div>
+                            <span class="text-2xl text-emerald-600"><i class="fa-solid fa-wifi"></i></span>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-emerald-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> 180 Gigas de Internet Dedicada</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Ligações Ilimitadas</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Sem burocracia ou fidelidade</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-emerald-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-emerald-600">R$</span>
+                                <span class="text-5xl font-black text-emerald-950">89,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20tenho%20interesse%20no%20Plano%20Celular%20de%20180GB." target="_blank" class="block text-center w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-500/20">
+                            Contratar ou Testar Grátis
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 250GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-emerald-400/40 hover:border-emerald-500 transition-all hover:-translate-y-2 hover:shadow-neon-green flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-heading font-extrabold text-2xl text-emerald-950">Plano 250GB</h3>
+                                <p class="text-emerald-800 text-sm mt-1">Foco total em dados</p>
+                            </div>
+                            <span class="text-2xl text-emerald-600"><i class="fa-solid fa-cloud-arrow-down"></i></span>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-emerald-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> 250 Gigas de Internet Ultra</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Ligações Ilimitadas</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-600"></i> Sem consulta ao SPC/Serasa</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-emerald-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-emerald-600">R$</span>
+                                <span class="text-5xl font-black text-emerald-950">99,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20tenho%20interesse%20no%20Plano%20Celular%20de%20250GB." target="_blank" class="block text-center w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Contratar ou Testar Grátis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS CELULAR + MODEM 4G (Azul Ciano - Fundo Ciano/Sky Claro e Vivo) -->
+    <section id="planos-modem-4g" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-cyan-50 via-sky-100 to-cyan-50">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-cyan-800 font-bold text-sm tracking-widest uppercase block mb-3">// CONEXÃO COMPARTILHADA RESIDENCIAL</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-cyan-950 mb-6">Celular + Modem 4G</h2>
+                <div class="glass-card max-w-2xl mx-auto p-5 rounded-2xl border-l-4 border-l-cyan-500 text-left shadow-sm">
+                    <p class="text-cyan-950 font-medium">
+                        <strong>Múltiplos pontos sem engasgar:</strong> "Pensa que modem 4G não aguenta casa cheia? Com múltiplos pontos de wi-fi e canal dedicado para streaming, todo mundo assiste e navega ao mesmo tempo sem travar."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid de Planos -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Card 550GB (1 ponto) -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-cyan-400/40 hover:border-cyan-500 transition-all hover:-translate-y-2 hover:shadow-neon-cyan flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-cyan-950 mb-2">Plano 550GB</h3>
+                        <p class="text-cyan-800 text-sm mb-6">Para toda a família navegar</p>
+                        <ul class="space-y-4 mb-8 text-cyan-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> Ligações + Multi-operadoras</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> Ideal para 1 ponto Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> TV a cabo, Filmes e Séries</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> YouTube Premium incluso</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-cyan-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-cyan-600">R$</span>
+                                <span class="text-5xl font-black text-cyan-950">129,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%20550GB%20(1%20Ponto%20Wi-Fi)." target="_blank" class="block text-center w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 550GB (2 pontos + IP Público) -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-cyan-500 hover:border-cyan-600 transition-all hover:-translate-y-2 hover:shadow-neon-cyan flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500 text-white font-extrabold text-xs px-4 py-1.5 rounded-bl-xl tracking-wider uppercase shadow-sm">Mais Indicado</div>
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-cyan-950 mb-2">Plano 550GB + IP</h3>
+                        <p class="text-cyan-800 text-sm mb-6">Para jogos e estabilidade de dados</p>
+                        <ul class="space-y-4 mb-8 text-cyan-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> Ligações + <strong>IP Público</strong></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> Suporta até 2 pontos Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> TV a cabo, Filmes e Séries</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> YouTube Premium incluso</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-cyan-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-cyan-600">R$</span>
+                                <span class="text-5xl font-black text-cyan-950">149,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%20550GB%20com%20IP%20Público%20e%202%20pontos." target="_blank" class="block text-center w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-cyan-500/20">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 950GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-cyan-400/40 hover:border-cyan-500 transition-all hover:-translate-y-2 hover:shadow-neon-cyan flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-cyan-950 mb-2">Plano 950GB</h3>
+                        <p class="text-cyan-800 text-sm mb-6">Velocidade extrema e largura de banda</p>
+                        <ul class="space-y-4 mb-8 text-cyan-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> <strong>IP Público + Link Dedicado</strong></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> Suporta até 4 pontos Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> TV a cabo, Filmes e Séries</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-600"></i> YouTube Premium incluso</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-cyan-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-cyan-600">R$</span>
+                                <span class="text-5xl font-black text-cyan-950">169,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%20950GB." target="_blank" class="block text-center w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS MODEM 5G E AMPLIMAX (Laranja Vibrante - Fundo Laranja Claro e Vivo) -->
+    <section id="planos-5g" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-orange-50 via-orange-100 to-orange-50">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-orange-800 font-bold text-sm tracking-widest uppercase block mb-3">// RESILIÊNCIA E ULTRA-SINAL</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-orange-950 mb-6">Modem 5G e Amplimax</h2>
+                <div class="glass-card max-w-2xl mx-auto p-5 rounded-2xl border-l-4 border-l-orange-500 text-left shadow-sm">
+                    <p class="text-orange-950 font-medium">
+                        <strong>Ideal para comércios e propriedades rurais:</strong> "Achou caro para empresa pequena? Com IP público e link dedicado você tem estabilidade de operadora grande pagando preço de atacado."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid de Planos -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Card 2.000GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-orange-400/40 hover:border-orange-500 transition-all hover:-translate-y-2 hover:shadow-neon-orange flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-orange-950 mb-2">Plano 2.000GB</h3>
+                        <p class="text-orange-800 text-sm mb-6">Estabilidade de link dedicado</p>
+                        <ul class="space-y-4 mb-8 text-orange-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> IP Público + Link Dedicado</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> Até 5 pontos de Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> TV, Filmes, Séries e Música</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-orange-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-orange-600">R$</span>
+                                <span class="text-5xl font-black text-orange-950">199,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%202.000GB%20Modem%205G." target="_blank" class="block text-center w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3.500GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-orange-500 hover:border-orange-600 transition-all hover:-translate-y-2 hover:shadow-neon-orange flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-orange-500 text-white font-extrabold text-xs px-4 py-1.5 rounded-bl-xl tracking-wider uppercase shadow-sm">Mais Vendido</div>
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-orange-950 mb-2">Plano 3.500GB</h3>
+                        <p class="text-orange-800 text-sm mb-6">Infraestrutura corporativa robusta</p>
+                        <ul class="space-y-4 mb-8 text-orange-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> IP Público + Link Dedicado</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> Até 7 pontos de Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> TV, Filmes, Séries e Música</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-orange-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-orange-600">R$</span>
+                                <span class="text-5xl font-black text-orange-950">229,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%203.500GB%20Modem%205G." target="_blank" class="block text-center w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-orange-500/20">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5.000GB -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-orange-400/40 hover:border-orange-500 transition-all hover:-translate-y-2 hover:shadow-neon-orange flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-heading font-extrabold text-2xl text-orange-950 mb-2">Plano 5.000GB</h3>
+                        <p class="text-orange-800 text-sm mb-6">Tráfego pesado para alta performance</p>
+                        <ul class="space-y-4 mb-8 text-orange-950 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> IP Público + Link Dedicado</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> Até 9 pontos de Wi-Fi</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-orange-600"></i> TV, Filmes, Séries e Música</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-orange-800 text-sm font-medium">Mensal</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-2xl font-bold text-orange-600">R$</span>
+                                <span class="text-5xl font-black text-orange-950">259,90</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20Plano%205.000GB%20Modem%205G." target="_blank" class="block text-center w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-md">
+                            Garantir Plano
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO ATIVAR (Amarelo Âmbar - Fundo Amarelo Claro e Vivo) -->
+    <section id="como-funciona" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-amber-50 via-yellow-100 to-amber-50">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <img src="imagens/logo-alternativo.jpg" alt="Conectados" class="mx-auto h-24 w-24 rounded-full border-2 border-amber-500 shadow-neon-amber mb-6 object-cover">
+                <span class="text-amber-800 font-bold text-sm tracking-widest uppercase block mb-3">// PASSO A PASSO SEGURO</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-amber-950 mb-6">Peça seu teste grátis e pague depois</h2>
+                <p class="text-amber-900 max-w-xl mx-auto italic font-medium">
+                    "Sem truques ou letras miúdas. <strong class="text-amber-700">O teste é 100% garantido</strong> e você só continua com o plano se realmente gostar."
+                </p>
+            </div>
+
+            <!-- Métodos de Ativação -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Chip Físico SIM -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-amber-400/40 hover:border-amber-500 transition-all hover:shadow-neon-amber">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="bg-amber-500 text-white h-12 w-12 rounded-2xl flex items-center justify-center text-xl font-bold">1</span>
+                        <h3 class="font-heading font-bold text-xl text-amber-950">Chip Físico SIM</h3>
+                    </div>
+                    <ul class="space-y-6 text-sm font-medium text-amber-950">
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Adquira um chip pré-pago comum da operadora Vivo e mantenha-o lacrado.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Envie uma foto do código de barras completo para nosso atendimento.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Ativamos o seu sinal em um prazo estimado de 1 a 3 horas.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Chip Virtual eSIM -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-amber-400/40 hover:border-amber-500 transition-all hover:shadow-neon-amber">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="bg-amber-500 text-white h-12 w-12 rounded-2xl flex items-center justify-center text-xl font-bold">2</span>
+                        <h3 class="font-heading font-bold text-xl text-amber-950">Chip Virtual e-SIM</h3>
+                    </div>
+                    <ul class="space-y-6 text-sm font-medium text-amber-950">
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Digite no discador de seu celular: <code class="bg-amber-200/60 px-2 py-0.5 rounded text-amber-900 font-bold">*#06#</code></p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Tire um print da tela que exibe as informações de EID e IMEI do SIM 2 e envie para nós.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-600 mt-1"><i class="fa-solid fa-circle-play"></i></span>
+                            <p>Informe a marca e o modelo exato do seu celular para ativarmos.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20ativar%20meu%20teste%20grátis!" target="_blank" class="inline-block bg-amber-500 hover:bg-amber-400 text-white font-extrabold text-lg px-8 py-4 rounded-xl transition-all hover:scale-105 shadow-neon-amber">
+                    Ativar meu teste via Consultor <i class="fa-solid fa-chevron-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS EXCLUSIVOS (Rosa Magenta - Fundo Rosa/Fuchsia Claro e Vivo) -->
+    <section id="beneficios" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-pink-50 via-fuchsia-100 to-pink-50">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-pink-800 font-bold text-sm tracking-widest uppercase block mb-3">// TODAS AS SUAS VANTAGENS</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-pink-950 mb-6">Benefícios Exclusivos</h2>
+                <p class="text-pink-900 max-w-xl mx-auto font-medium">
+                    "Navegação constante, suporte ativo de verdade e garantia jurídica de 30 dias de pleno funcionamento. Se não gostar, a gente resolve."
+                </p>
+            </div>
+
+            <!-- Grid de Benefícios -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto text-center">
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-infinity"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Internet Infinita</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Sem quedas diárias</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-phone-volume"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Ligações</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Para todo o Brasil</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-lock"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">APN Privados</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Mais sigilo de dados</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-rss"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Roteamento</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Wi-Fi livre para todos</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-tv"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">TV & Filmes</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Séries e canais inclusos</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-headset"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Suporte 24h</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Sempre à sua disposição</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-shield-check"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Garantia 30d</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Seu sinal assegurado</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-2 border-pink-400/40 hover:border-pink-50 transition-all hover:shadow-neon-magenta">
+                    <span class="text-3xl text-pink-600 block mb-3"><i class="fa-solid fa-globe"></i></span>
+                    <h4 class="font-bold text-pink-950 mb-1">Multi-operadoras</h4>
+                    <p class="text-xs text-pink-800 font-semibold">Conexão redundante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS DE CLIENTES (Fundo Roxo Claro e Vivo) -->
+    <section id="depoimentos" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal bg-gradient-to-b from-purple-50 via-violet-100 to-purple-50 overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-purple-800 font-bold text-sm tracking-widest uppercase block mb-3">// QUEM JÁ TESTOU APROVOU</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-purple-950">Histórias de Conexão Real</h2>
+            </div>
+
+            <!-- Carrossel -->
+            <div class="relative overflow-hidden">
+                <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="glass-card p-8 rounded-3xl border-2 border-purple-400/40 text-center shadow-sm">
+                            <div class="flex justify-center text-yellow-500 mb-4 gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-lg sm:text-xl text-slate-800 italic mb-6">
+                                "Testei antes de pagar, como prometeram, e nunca mais voltei para a operadora antiga de celular."
+                            </p>
+                            <h4 class="font-bold text-purple-950">Roberto S.</h4>
+                            <span class="text-xs text-purple-800 font-semibold">São Paulo, SP</span>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="glass-card p-8 rounded-3xl border-2 border-purple-400/40 text-center shadow-sm">
+                            <div class="flex justify-center text-yellow-500 mb-4 gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-lg sm:text-xl text-slate-800 italic mb-6">
+                                "Ativei o e-SIM em menos de uma hora, diretamente pelo WhatsApp, sem qualquer burocracia desnecessária."
+                            </p>
+                            <h4 class="font-bold text-purple-950">Aline Nogueira</h4>
+                            <span class="text-xs text-purple-800 font-semibold">Rio de Janeiro, RJ</span>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="glass-card p-8 rounded-3xl border-2 border-purple-400/40 text-center shadow-sm">
+                            <div class="flex justify-center text-yellow-500 mb-4 gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-lg sm:text-xl text-slate-800 italic mb-6">
+                                "Uso para trabalhar de home office e assistir filmes, a internet é estável e as ligações são nítidas."
+                            </p>
+                            <h4 class="font-bold text-purple-950">Fagner Costa</h4>
+                            <span class="text-xs text-purple-800 font-semibold">Joinville, SC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 mt-8">
+                    <button id="prev-slide" class="bg-purple-800 hover:bg-purple-700 text-white h-10 w-10 rounded-full flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="next-slide" class="bg-purple-800 hover:bg-purple-700 text-white h-10 w-10 rounded-full flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Fundo Neutro Claro) -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 relative reveal max-w-4xl mx-auto bg-slate-50">
+        <div class="text-center mb-16">
+            <span class="text-indigo-600 font-bold text-sm tracking-widest uppercase block mb-3">// DÚVIDAS SOLUCIONADAS</span>
+            <h2 class="font-heading font-black text-3xl sm:text-5xl text-slate-900">Perguntas Frequentes</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="glass-card rounded-2xl border border-slate-300/80 overflow-hidden shadow-sm">
+                <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-100/50 transition-colors">
+                    <span>Preciso pagar algo pra testar?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="px-6 pb-5 text-slate-700 text-sm">
+                        Não. Você solicita o teste gratuito e só realiza o pagamento da mensalidade se aprovar o serviço e quiser manter a linha ativa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl border border-slate-300/80 overflow-hidden shadow-sm">
+                <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-100/50 transition-colors">
+                    <span>Tem fidelidade ou multa se eu cancelar?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="px-6 pb-5 text-slate-700 text-sm">
+                        Nos planos próprios do Grupo Atacadão dos Gigas não há fidelidade, contrato ou multa de quebra de acordo. Alguns planos parceiros integrados (como VERO, Federal Net e Claro Free) têm fidelidade, que é informada claramente antes da adesão.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl border border-slate-300/80 overflow-hidden shadow-sm">
+                <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-100/50 transition-colors">
+                    <span>Funciona em qualquer celular?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="px-6 pb-5 text-slate-700 text-sm">
+                        Sim. É totalmente compatível com a ampla maioria de smartphones no Brasil, por meio de chip comum físico (Nano SIM) ou chip virtual e-SIM.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPRESAS PARCEIRAS (Selo de Parceria Oficial) -->
+    <section id="parceiros" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal bg-slate-100 text-center overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <img src="imagens/logo-alternativo.jpg" alt="Parceiros" class="mx-auto h-24 w-24 rounded-full border-2 border-red-400 shadow-neon-coral mb-6 object-cover">
+            <h2 class="font-heading font-black text-3xl sm:text-5xl text-slate-900 mb-6">Empresas Parceiras Oficiais</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-12 font-medium">
+                "Segurança operacional. São empresas de altíssima relevância no mercado integradas às soluções do Grupo Atacadão dos Gigas."
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-90 max-w-4xl mx-auto">
+                <div class="glass-card p-6 rounded-2xl w-full border-2 border-red-500/10 hover:border-red-500 transition-colors shadow-sm">
+                    <span class="font-heading font-bold text-red-600 text-2xl tracking-wider">VERO</span>
+                    <p class="text-xs text-slate-600 font-semibold mt-1">Multi-operadora</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl w-full border-2 border-red-500/10 hover:border-red-500 transition-colors shadow-sm">
+                    <span class="font-heading font-bold text-red-600 text-2xl tracking-wider">FEDERAL NET</span>
+                    <p class="text-xs text-slate-600 font-semibold mt-1">Soluções TIM/Claro</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl w-full border-2 border-red-500/10 hover:border-red-500 transition-colors shadow-sm">
+                    <span class="font-heading font-bold text-red-600 text-2xl tracking-wider">TIM</span>
+                    <p class="text-xs text-slate-600 font-semibold mt-1">TIM Black e Conect</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl w-full border-2 border-red-500/10 hover:border-red-500 transition-colors shadow-sm">
+                    <span class="font-heading font-bold text-red-600 text-2xl tracking-wider">CLARO</span>
+                    <p class="text-xs text-slate-600 font-semibold mt-1">Planos Homologados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS PARCEIROS (Vermelho Coral - Fundo Coral Claro e Vivo) -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-red-50 via-rose-100 to-red-50">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-red-800 font-bold text-sm tracking-widest uppercase block mb-3">// CONDIÇÕES ESPECIAIS CORPORATIVAS</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-red-950 mb-6">Planos Parceiros do Grupo</h2>
+                <div class="glass-card max-w-2xl mx-auto p-5 rounded-2xl border-l-4 border-l-red-500 text-left mb-10 shadow-sm">
+                    <p class="text-red-950 font-medium">
+                        <strong>Preços exclusivos em operadoras nacionais:</strong> "Prefere manter a rede que você já utiliza? Aqui você contrata planos da TIM e Claro com tarifas de grupo empresarial."
+                    </p>
+                </div>
+
+                <!-- Video Parceiros -->
+                <div class="max-w-2xl mx-auto mb-16 rounded-2xl overflow-hidden border-4 border-red-500 shadow-neon-coral bg-black relative">
+                    <video id="video-parceiros" class="w-full aspect-video object-cover" autoplay loop muted playsinline>
+                        <source src="videos/planos-parceiros.mp4" type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute('video-parceiros', 'btn-vol-parceiros')" id="btn-vol-parceiros" class="absolute bottom-4 right-4 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 flex items-center justify-center transition-all z-20">
+                        <i class="fa-solid fa-volume-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Listagem de Planos Parceiros -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- VERO & Federal Net -->
+                <div class="space-y-8">
+                    <div class="glass-card p-6 rounded-3xl border-2 border-red-400/40 hover:border-red-500 transition-colors shadow-sm">
+                        <div class="flex justify-between items-center border-b border-slate-300/80 pb-4 mb-4">
+                            <h3 class="font-heading font-bold text-xl text-red-950">VERO Multi-operadora</h3>
+                            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">TIM + CLARO</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-extrabold text-2xl text-red-950">Plano 60GB</h4>
+                                <p class="text-xs text-red-800 font-semibold mt-1">Ligações e documentações inclusas. Fidelidade de 12 meses.</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-red-800 font-semibold">Mensal</span>
+                                <p class="text-3xl font-black text-red-600">R$49,90</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-3xl border-2 border-red-400/40 hover:border-red-500 transition-colors shadow-sm">
+                        <div class="flex justify-between items-center border-b border-slate-300/80 pb-4 mb-4">
+                            <h3 class="font-heading font-bold text-xl text-red-950">Federal Net</h3>
+                            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">Fidelidade 1 Mês</span>
+                        </div>
+                        <div class="space-y-4 text-sm font-medium text-slate-800">
+                            <div class="flex justify-between items-center border-b border-slate-300/40 pb-2">
+                                <span class="text-slate-700">TIM 100GB (Ligações, chip, documentos)</span>
+                                <span class="font-bold text-red-950">R$ 69,90</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-300/40 pb-2">
+                                <span class="text-slate-700">TIM 200GB (Redes Sociais + Ligações)</span>
+                                <span class="font-bold text-red-950">R$ 159,90</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-300/40 pb-2">
+                                <span class="text-slate-700">Claro 80GB (Ligações, chip, documentos)</span>
+                                <span class="font-bold text-red-950">R$ 69,90</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-700">Claro 150GB (Ligações, chip, documentos)</span>
+                                <span class="font-bold text-red-950">R$ 99,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIM Black & Claro Conect/Free -->
+                <div class="space-y-8">
+                    <div class="glass-card p-6 rounded-3xl border-2 border-red-400/40 hover:border-red-500 transition-colors shadow-sm">
+                        <div class="flex justify-between items-center border-b border-slate-300/80 pb-4 mb-4">
+                            <h3 class="font-heading font-bold text-xl text-red-950">TIM Black</h3>
+                            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">Sem Fidelidade</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-extrabold text-2xl text-red-950">TIM 70GB</h4>
+                                <p class="text-xs text-red-800 font-semibold mt-1">FB, Insta, WhatsApp, Waze e TikTok ilimitados. Ativa no chip pré atual.</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-red-800 font-semibold">Mensal</span>
+                                <p class="text-3xl font-black text-red-600">R$99,90</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-3xl border-2 border-red-400/40 hover:border-red-500 transition-colors shadow-sm">
+                        <h3 class="font-heading font-bold text-xl text-red-950 border-b border-slate-300/80 pb-4 mb-4">Conect Claro & Claro Free</h3>
+                        <div class="mb-4 bg-white/60 p-4 rounded-xl border border-red-200">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-sm text-red-950">Claro Free 240GB + 120GB Noturno</h4>
+                                    <p class="text-xs text-red-800">Fidelidade de 1 ano. Envio de chip físico.</p>
+                                </div>
+                                <span class="font-black text-red-600">R$ 149,90</span>
+                            </div>
+                        </div>
+                        
+                        <h4 class="font-bold text-xs text-red-800 uppercase tracking-widest mb-3">Conect Claro (Sem Fidelidade)</h4>
+                        <div class="space-y-2 max-h-36 overflow-y-auto pr-1 text-xs text-slate-800 font-medium">
+                            <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                                <span>15GB (Extra +10GB por R$19,90)</span>
+                                <span class="font-bold">R$ 49,90</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                                <span>30GB (Extra +10GB por R$15,00)</span>
+                                <span class="font-bold">R$ 49,90</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                                <span>35GB (Extra +10GB por R$19,90)</span>
+                                <span class="font-bold">R$ 69,90</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                                <span>70GB (Extra +10GB por R$19,90)</span>
+                                <span class="font-bold">R$ 89,90</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>140GB (Extra +10GB por R$19,90)</span>
+                                <span class="font-bold">R$ 129,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20consultar%20os%20planos%20das%20operadoras%20parceiras." target="_blank" class="inline-block bg-red-600 hover:bg-red-500 text-white font-extrabold text-lg px-8 py-4 rounded-xl transition-all hover:scale-105 shadow-neon-coral">
+                    Falar com um Consultor de Parceiros
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRABALHE CONOSCO (Verde Esmeralda - Fundo Verde Esmeralda Claro e Vivo) -->
+    <section id="trabalhe-conosco" class="py-24 px-4 sm:px-6 lg:px-8 relative reveal overflow-hidden bg-gradient-to-b from-emerald-50 via-teal-100 to-emerald-50">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-emerald-800 font-bold text-sm tracking-widest uppercase block mb-3">// GERENCIA SUA PRÓPRIA RENDA</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-emerald-950 mb-6">Trabalhe Conosco</h2>
+                <div class="glass-card max-w-2xl mx-auto p-5 rounded-2xl border-l-4 border-l-emerald-500 text-left shadow-sm">
+                    <p class="text-emerald-950 font-medium">
+                        <strong>Faça parte de nossa rede distribuidora:</strong> "Foque no seu desempenho de vendas. Sem taxas de investimento inicial, você só precisa de boa comunicação. O repasse das comissões é diário."
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Informações e Vantagens -->
+                <div>
+                    <h3 class="font-heading font-extrabold text-2xl text-emerald-950 mb-6">Conquiste uma renda de forma flexível</h3>
+                    <p class="text-emerald-900 mb-8 font-medium">
+                        Basta ter disciplina e foco para vender planos de gigas ilimitados em todo o território nacional. 
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 text-xl"><i class="fa-solid fa-coins"></i></span>
+                            <span class="text-emerald-950 text-sm font-semibold">Ganhos diários expressivos</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 text-xl"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                            <span class="text-emerald-950 text-sm font-semibold">Investimento inicial zero</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 text-xl"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                            <span class="text-emerald-950 text-sm font-semibold">Crescimento contínuo</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 text-xl"><i class="fa-solid fa-headset"></i></span>
+                            <span class="text-emerald-950 text-sm font-semibold">Suporte de TI integrado</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5500000000000?text=Quero%20trabalhar%20com%20a%20Atacadão%20dos%20Gigas" target="_blank" class="inline-block w-full sm:w-auto text-center bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg px-8 py-4 rounded-xl transition-all hover:scale-105 shadow-neon-emerald">
+                        Quero trabalhar no Atacadão <i class="fa-solid fa-chevron-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Video e flyer lateral -->
+                <div class="space-y-6">
+                    <div class="rounded-2xl overflow-hidden border-4 border-emerald-500 shadow-neon-emerald bg-black relative">
+                        <video id="video-trabalho" class="w-full aspect-video object-cover" autoplay loop muted playsinline>
+                            <source src="videos/trabalhe-conosco.mp4" type="video/mp4">
+                        </video>
+                        <button onclick="toggleMute('video-trabalho', 'btn-vol-trabalho')" id="btn-vol-trabalho" class="absolute bottom-4 right-4 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 flex items-center justify-center transition-all z-20">
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </button>
+                    </div>
+                    <img src="imagens/trabalhe-conosco.jpg" alt="Vagas Abertas" class="w-full rounded-2xl border border-slate-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL (Roxo-neon para Azul Elétrico - Fundo Claro e Vivo) -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden bg-gradient-to-br from-purple-100 to-indigo-150 border-t-2 border-purple-200">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <img src="imagens/logo-mascote.jpg" alt="Atacadão dos Gigas" class="mx-auto h-28 w-28 rounded-full border border-purple-500 shadow-neon-purple mb-8 object-cover">
+            <h2 class="font-heading font-black text-4xl sm:text-6xl text-slate-950 mb-6">Ainda com dúvida? <br>Fale com a gente agora.</h2>
+            <p class="text-xl text-slate-800 mb-10 max-w-2xl mx-auto font-medium">Solicite o seu teste gratuito sem qualquer fidelidade ou taxas de adesão.</p>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Ainda%20tenho%20algumas%20dúvidas%20antes%20de%20fechar." target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-xl px-12 py-5 rounded-2xl transition-all hover:scale-105 shadow-neon-purple">
+                Falar no WhatsApp agora <i class="fab fa-whatsapp ml-2 text-2xl align-middle"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- RODAPÉ (Fundo Escuro para Fechamento de Confiança) -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-16 px-4 sm:px-6 lg:px-8 text-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <img src="imagens/logo-mascote.jpg" alt="Mascote" class="h-10 w-10 rounded-full border border-purple-500 object-cover">
+                    <span class="font-heading font-black text-white tracking-wider">ATACADÃO DOS GIGAS</span>
+                </div>
+                <p class="text-slate-400 text-sm">"Conectados vivemos muito melhor!"</p>
+                <div class="flex gap-4 text-slate-400">
+                    <a href="https://instagram.com/atacadaodosgigas" target="_blank" class="hover:text-white transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:contato@atacadaodosgigas.com" class="hover:text-white transition-colors text-lg"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-4">Navegação rápida</h4>
+                <ul class="space-y-2 text-slate-400 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Início</a></li>
+                    <li><a href="#planos-celular" class="hover:text-white transition-colors">Planos para Celular</a></li>
+                    <li><a href="#planos-modem-4g" class="hover:text-white transition-colors">Celular + Modem 4G</a></li>
+                    <li><a href="#planos-5g" class="hover:text-white transition-colors">Modem 5G</a></li>
+                    <li><a href="#como-funciona" class="hover:text-white transition-colors">Como Funciona</a></li>
+                    <li><a href="#trabalhe-conosco" class="hover:text-white transition-colors">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-4">Atendimento</h4>
+                <ul class="space-y-2 text-slate-400 text-sm">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-headset text-purple-400"></i> Suporte Dedicado 24h</li>
+                    <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-purple-400"></i> Canal WhatsApp</li>
+                    <li class="flex items-center gap-2"><i class="fa-regular fa-envelope text-purple-400"></i> contato@atacadaodosgigas.com</li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-bold text-white text-sm">Garantias e Segurança</h4>
+                <div class="flex flex-col gap-2.5 text-xs text-slate-400">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-lock text-green-500"></i> 🔒 Transação segura</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-green-500"></i> ✅ Garantia de 30 dias</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-user-shield text-green-500"></i> 🛠️ Atendimento contínuo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+            <p>© <span id="current-year"></span> Atacadão dos Gigas — Todos os direitos reservados.</p>
+            <p class="mt-2 sm:mt-0">Foco em velocidade, clareza e alta conversão comercial.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20realizar%20um%20teste%20de%20velocidade%20grátis!" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-400 text-white h-14 w-14 rounded-full flex items-center justify-center text-3xl shadow-xl pulse-wa transition-transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Menu Mobile Drawer
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle Mute Vídeos
+        function toggleMute(videoId, buttonId) {
+            const video = document.getElementById(videoId);
+            const button = document.getElementById(buttonId);
+            if (video.muted) {
+                video.muted = false;
+                button.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            } else {
+                video.muted = true;
+                button.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            }
+        }
+
+        // Accordion FAQ
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const chevron = toggle.querySelector('.fa-chevron-down');
+                
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content && otherContent.style.maxHeight !== '0px') {
+                        otherContent.style.maxHeight = '0px';
+                        otherContent.previousElementSibling.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.maxHeight = '0px';
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Carrossel de Depoimentos
+        const track = document.getElementById('carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.getElementById('next-slide');
+        const prevButton = document.getElementById('prev-slide');
+        let currentIndex = 0;
+
+        function updateCarouselPosition() {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarouselPosition();
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slides.length - 1;
+            }
+            updateCarouselPosition();
+        });
+
+        window.addEventListener('resize', updateCarouselPosition);
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+        function handleReveal() {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleReveal);
+        handleReveal();
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
